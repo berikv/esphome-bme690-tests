@@ -1,5 +1,5 @@
 external_components:
-  - source: github://berikv/esphome@dev  # replace with the PR branch/ref being tested
+  - source: github://berikv/esphome@dev  # For testing the BME690 PR
     components: [bme690]
     refresh: 0s
 

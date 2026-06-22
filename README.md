@@ -7,14 +7,13 @@ OTA, logger, API, and I2C bus setup. Add one snippet to an existing working ESPH
 - an `i2c:` bus with `id: bus_a` or update `i2c_id`
 - logger/API/OTA/Wi-Fi as needed for your device
 
-Update `external_components.source` to the branch/ref being tested, then update `bsec_library` and `bsec_config`
-to files available on your ESPHome build host. The BSEC library archive and config file must come from the same
-Bosch BSEC release and target architecture.
+Update `bsec_library` and `bsec_config` to files available on your ESPHome build host. The BSEC library archive and
+config file must come from the same Bosch BSEC release and target architecture.
 
 Expected first-cycle result:
 
 - BSEC 3.3.0 LP: `BSEC outputs: 13`
-- BSEC 3.3.0 ULP: `BSEC outputs: 12`
+- BSEC 3.3.0 ULP: `BSEC outputs: 12` (Note: can take up to 5 minutes for the first values)
 - BSEC 3.2.1 LP: `BSEC outputs: 13`
 - BSEC 3.2.1 ULP: `BSEC outputs: 13`
 
