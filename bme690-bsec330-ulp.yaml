@@ -1,0 +1,31 @@
+external_components:
+  - source: github://berikv/esphome@dev  # replace with the PR branch/ref being tested
+    components: [bme690]
+    refresh: 0s
+
+bme690:
+  id: bme690_sensor
+  i2c_id: bus_a
+  address: 0x76
+  bsec_library: /config/esphome/bme690/lib_330_s3.a            # BSEC 3.3.0.0 libalgobsec.a for your MCU target
+  bsec_config: /config/esphome/bme690/cfg_330_33v_300s.config  # BSEC 3.3.0.0 bme690_iaq_33v_300s_4d/bsec_iaq.config
+  sample_rate: ULP
+  update_interval: 5s
+  state_save_interval: 6h
+  temperature_offset: 0  # tune to raw die temperature minus ambient temperature for your board/enclosure
+
+sensor:
+  - platform: bme690
+    bme690_id: bme690_sensor
+    iaq: { name: BME690 IAQ }
+    static_iaq: { name: BME690 Static IAQ }
+    co2_equivalent: { name: BME690 CO2 Equivalent }
+    compensated_temperature: { name: BME690 Temperature }
+    compensated_humidity: { name: BME690 Humidity }
+    pressure: { name: BME690 Pressure }
+    gas_resistance: { name: BME690 Gas Resistance }
+
+text_sensor:
+  - platform: bme690
+    bme690_id: bme690_sensor
+    iaq_accuracy: { name: BME690 IAQ Accuracy }
