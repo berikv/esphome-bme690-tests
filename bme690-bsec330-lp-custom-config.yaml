@@ -22,6 +22,7 @@ sensor:
     iaq: { name: BME690 IAQ }
     static_iaq: { name: BME690 Static IAQ }
     co2_equivalent: { name: BME690 CO2 Equivalent }
+    tvoc_equivalent: { name: BME690 TVOC Equivalent }  # ppb; BSEC 3.3 LP only
     compensated_temperature: { name: BME690 Temperature }
     compensated_humidity: { name: BME690 Humidity }
     pressure: { name: BME690 Pressure }

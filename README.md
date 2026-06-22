@@ -42,8 +42,8 @@ A passing test should show the BSEC control path and virtual outputs, for exampl
 LP should use `update_interval: 3s`. Slower LP polling can trigger `BSEC_W_SC_CALL_TIMING_VIOLATION` warning 100.
 ULP can take up to 5 minutes for the first values to appear.
 
-BSEC 3.2.x exposes `breath_voc_equivalent`. BSEC 3.3.x disables Breath VOC for BME690, so those snippets leave it
-out.
+BSEC 3.2.x exposes `breath_voc_equivalent` in ppm. BSEC 3.3.x disables Breath VOC for BME690 and exposes
+`tvoc_equivalent` in ppb for LP only, so only the BSEC 3.3 LP snippets include it.
 
 `temperature_offset` is board-specific self-heating compensation. Start at `0`, then tune it to roughly
 `raw die temperature - ambient temperature` for your board and enclosure.
