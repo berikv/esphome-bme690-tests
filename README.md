@@ -47,3 +47,31 @@ BSEC 3.2.x exposes `breath_voc_equivalent` in ppm. BSEC 3.3.x disables Breath VO
 
 `temperature_offset` is board-specific self-heating compensation. Start at `0`, then tune it to roughly
 `raw die temperature - ambient temperature` for your board and enclosure.
+
+## Reporting results
+
+Run one YAML snippet at a time from your ESPHome checkout. Replace the config path and device name with your local
+setup:
+
+```bash
+python3 -m esphome run /path/to/your/config.yaml --device your-device.local 2>&1 | tee bme690-test.log
+```
+
+Run each test up to 10 minutes. For ULP tests, run long enough to see the first BSEC cycle; this can take
+around 5 minutes. The key result is whether BSEC publishes the expected virtual outputs, not whether IAQ is fully
+calibrated yet.
+
+Please paste the relevant log lines and this filled-in table when reporting results:
+
+```markdown
+| Test | ESP | BSEC | Rate | Config | Outputs | Temp | CO2 | TVOC | IAQ accuracy after 10 min | Notes |
+| --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- | --- |
+| bsec330_lp |  | 3.3.0.0 | LP | bme690_iaq_33v_3s_4d |  |  |  |  |  |  |
+| bsec330_lp_custom_28d |  | 3.3.0.0 | LP | bme690_iaq_33v_3s_28d |  |  |  |  |  |  |
+| bsec321_lp |  | 3.2.1.0 | LP | bme690_iaq_33v_3s_4d |  |  |  |  |  |  |
+| bsec330_ulp |  | 3.3.0.0 | ULP | bme690_iaq_33v_300s_4d |  |  |  |  |  |  |
+| bsec321_ulp |  | 3.2.1.0 | ULP | bme690_iaq_33v_300s_4d |  |  |  |  |  |  |
+```
+
+Use `yes`/`no` for Temp, CO2, and TVOC. `Outputs` is the number from the `BSEC outputs: ...` log line. For BSEC 3.3
+LP, TVOC is expected. For BSEC 3.2.x and BSEC 3.3 ULP, TVOC is not expected.
