@@ -1,7 +1,7 @@
 external_components:
-  - source: github://berikv/esphome@dev  # For testing the BME690 PR
+  - source: github://pr#17155
     components: [bme690]
-    refresh: 0s
+    refresh: 600s
 
 bme690:
   id: bme690_sensor

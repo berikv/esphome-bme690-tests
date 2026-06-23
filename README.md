@@ -1,13 +1,14 @@
 # BME690 BSEC test snippets
 
-These YAML files are minimal snippets for testing the BME690 PR branch. They intentionally leave out board, Wi-Fi,
+These YAML files are minimal snippets for testing the BME690 PR branch. They default to `github://pr#17155`.
+They intentionally leave out board, Wi-Fi,
 OTA, logger, API, and I2C bus setup. Add one snippet to an existing working ESPHome config that already defines:
 
 - an ESP32 ESP-IDF target
 - an `i2c:` bus with `id: bus_a`, or update `i2c_id`
 - logger/API/OTA/Wi-Fi as needed for your device
 
-Update `external_components.source` to the branch under test if needed. Update `bsec_library` and `bsec_config` to
+Update `bsec_library` and `bsec_config` to
 files available on your ESPHome build host. The BSEC library archive and config file must match:
 
 - the same Bosch BSEC release, for example 3.2.1.0 or 3.3.0.0
